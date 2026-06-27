@@ -1,0 +1,8 @@
+[build]
+  command = "next build"
+  publish = ".next"
+
+# Netlify auto-installs and runs the official Next.js runtime, which turns
+# route handlers (like /api/contact) into serverless functions.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

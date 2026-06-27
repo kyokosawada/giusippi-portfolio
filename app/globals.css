@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Blueprint of the stack — design tokens
+   ============================================================ */
+@theme {
+  /* Paper (cool drafting grey) */
+  --color-paper: #eaedf2;
+  --color-paper-2: #e1e6ec;
+  --color-card: #f4f6f9;
+
+  /* Ink (deep navy) */
+  --color-ink: #0b1622;
+  --color-ink-2: #12202e;
+  --color-ink-3: #1b2d3f;
+
+  /* Steel (muted text) */
+  --color-steel: #566779;
+  --color-steel-2: #82909f;
+
+  /* Hairlines */
+  --color-line: #d4dae1;
+  --color-line-2: #c4ccd6;
+
+  /* Signal — electric ultramarine, used sparingly */
+  --color-signal: #2440ff;
+  --color-signal-2: #5167ff;
+
+  /* Type */
+  --font-display: var(--font-archivo);
+  --font-sans: var(--font-plex-sans);
+  --font-mono: var(--font-plex-mono);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.02;
+  }
+  ::selection {
+    background: var(--color-signal);
+    color: #fff;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+
+/* Faint engineering grid for dark blueprint surfaces */
+.blueprint {
+  background-color: var(--color-ink);
+  background-image:
+    linear-gradient(rgba(126, 156, 186, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(126, 156, 186, 0.06) 1px, transparent 1px);
+  background-size: 34px 34px;
+  background-position: center;
+}
+
+/* Light grid for paper surfaces */
+.blueprint-light {
+  background-image:
+    linear-gradient(rgba(11, 22, 34, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 22, 34, 0.035) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+/* Mono label — the "draftsman's note" */
+.label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal[data-visible="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stack diagram entrance + spine */
+@keyframes plate-in {
+  from {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes spine-draw {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+.plate {
+  opacity: 0;
+  animation: plate-in 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+.spine {
+  transform-origin: top;
+  animation: spine-draw 0.9s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+/* Link underline that grows from the start */
+.link-grow {
+  background-image: linear-gradient(var(--color-signal), var(--color-signal));
+  background-size: 0% 1.5px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease;
+}
+.link-grow:hover {
+  background-size: 100% 1.5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none;
+  }
+  .plate {
+    opacity: 1;
+    animation: none;
+  }
+  .spine {
+    animation: none;
+    transform: scaleY(1);
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
