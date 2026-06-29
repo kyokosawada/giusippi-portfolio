@@ -25,12 +25,22 @@ export default function Nav() {
           ))}
         </div>
 
-        <a
-          href="#contact"
-          className="bg-ink px-4 py-2 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-paper transition-colors hover:bg-signal"
-        >
-          Start a build
-        </a>
+        <div className="flex items-center gap-4 sm:gap-5">
+          <a
+            href="/Apa_Giusippi_Resume.pdf"
+            target="_blank"
+            rel="noopener"
+            className="font-mono text-[0.72rem] uppercase tracking-[0.16em] text-steel transition-colors hover:text-ink"
+          >
+            Résumé
+          </a>
+          <a
+            href="#contact"
+            className="bg-ink px-4 py-2 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-paper transition-colors hover:bg-signal"
+          >
+            Start a build
+          </a>
+        </div>
       </nav>
     </header>
   );

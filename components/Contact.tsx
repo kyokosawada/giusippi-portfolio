@@ -54,6 +54,14 @@ export default function Contact() {
             >
               {profile.email}
             </a>
+            <a
+              href="/Apa_Giusippi_Resume.pdf"
+              target="_blank"
+              rel="noopener"
+              className="link-grow inline-block font-mono text-sm text-ink"
+            >
+              Download résumé (PDF) →
+            </a>
             <p className="font-mono text-[0.7rem] uppercase tracking-[0.12em] text-steel-2">
               {profile.status}
             </p>
