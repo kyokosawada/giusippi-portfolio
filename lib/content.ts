@@ -165,7 +165,7 @@ export const projects: Project[] = [
       "OAuth",
     ],
     badge: "In development",
-    // images: drop Slack shots in public/shots/ named slack-*.png, then list them here
+    images: ["/shots/slack-booking.png", "/shots/slack-email-search.png"],
   },
 ];
 
