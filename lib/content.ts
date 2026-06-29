@@ -142,6 +142,31 @@ export const projects: Project[] = [
       "/shots/mystica-spread.png",
     ],
   },
+  {
+    id: "slack-assistant",
+    name: "Slack AI Assistant",
+    kicker: "Conversational agent · in development",
+    role: "Solo — design & build",
+    summary:
+      "A Slack bot you chat with in plain English. It reasons with Google Gemini and acts across Gmail and Calendar — searching and drafting email, checking the schedule, booking meetings — and always asks before doing anything irreversible.",
+    highlights: [
+      "Tool-using agent loop: Gemini picks a tool, the bot runs it and feeds the result back until the task is done",
+      "Six tools across Gmail and Calendar — search, read, send, list events, find free time, create event",
+      "Send and book actions gated behind a Slack confirm button — nothing irreversible without an explicit OK",
+      "Slack Bolt over Socket Mode — a persistent WebSocket, no public URL, runs anywhere",
+    ],
+    stack: [
+      "TypeScript",
+      "Node",
+      "Slack Bolt",
+      "Gemini",
+      "Gmail API",
+      "Google Calendar",
+      "OAuth",
+    ],
+    badge: "In development",
+    // images: drop Slack shots in public/shots/ named slack-*.png, then list them here
+  },
 ];
 
 // How I work — the outcome, not the steps. Agentic AI workflow → shipped, fast, right.
